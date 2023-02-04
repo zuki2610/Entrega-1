@@ -1,3 +1,75 @@
+const heroes = [
+    {
+        id: 1,
+        nombre: "Black Widow",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/blackwidow.jpg",
+        descripcion: "Natasha Romanoff, también conocida como Black Widow",
+        superpoder: "Natasha es una experta en artes marciales, es una excelente luchadora cuerpo a cuerpo y es una de las mejores espías del mundo. También es una excelente estratega y una gran estratega.",
+    },
+    {
+        id: 2,
+        nombre: "Captain America",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/capitan.jpg",
+        descripcion: "Steve Rogers, también conocido como Capitán América",
+        superpoder: "Steve Rogers es un super soldado, es un excelente luchador cuerpo a cuerpo y es un gran estratega.",
+    },
+    {
+        id: 3,
+        nombre: "Hulk",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/hulk.jpg",
+        descripcion: "Bruce Banner, también conocido como Hulk",
+        superpoder: "Bruce Banner es un científico que se transforma en Hulk cuando se enoja, Hulk es un super soldado, es un excelente luchador cuerpo a cuerpo y es un gran estratega.",
+    },
+    {
+        id: 4,
+        nombre: "Iron Man",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/ironman.jpg",
+        descripcion: "Iron Man, también conocido como Tony Stark",
+        superpoder: "Genio, millonario, playboy, filántropo",
+    },
+    {
+        id: 5,
+        nombre: "Loki",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/loki.jpeg",
+        descripcion: "Loki, también conocido como Loki Odinson",
+        superpoder: "Loki, príncipe de Asgard, hijo de Odín, legítimo rey de. Jotunheim y Dios de las mentiras y el engaño",
+    },
+    {
+        id: 6,
+        nombre: "Scarlet Witch",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/scarlet.jpg",
+        descripcion: "Wanda Maximoff, también conocida como Scarlet Witch",
+        superpoder: "Wanda Maximoff ha demostrado ser capaz de proyectar poderosos campos y escudos de energía mística que puede utilizar para muchos propósitos diferentes.",
+    },
+    {
+        id: 7,
+        nombre: "Star Lord",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/starlord.jpg",
+        descripcion: "Peter Quill, también conocido como Star-Lord",
+        superpoder: "Peter Quill es un experto en combate cuerpo a cuerpo, un experto en artes marciales, un experto en combate a distancia y un experto en combate aéreo.",
+    },
+    {
+        id: 8,
+        nombre: "Doctor Strange",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/strange.jpg",
+        descripcion: "Stephen Strange, también conocido como Doctor Strange",
+        superpoder: "Stephen Strange es un mago, un hechicero, un médico y un cirujano.",
+    },
+    {
+        id: 9,
+        nombre: "Thor",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/thor.jpg",
+        descripcion: "Thor Odinson, también conocido como Thor",
+        superpoder: "Thor es un super soldado, es un excelente luchador cuerpo a cuerpo Dios del trueno.",
+    },
+    {
+        id: 10,
+        nombre: "Thanos",
+        imagen: "https://raw.githubusercontent.com/zuki2610/Entrega-1/main/assets/thanos.jpg",
+        descripcion: "Thanos, también conocido como Thanos el Titán Loco",
+        superpoder: "Thanos posee una enorme fuerza, velocidad, reflejos, aglidad, resistencia, durabilidad sobrehumana, invulnerabilidad e inmortalidad.",
+    },
+]
 const preguntas = [
   {
     id: 1,
@@ -48,14 +120,15 @@ const calcular = () => {
   selectedRadios.forEach(function (radio) {
     sum += parseInt(radio.value);
   });
+  const heroe =  heroes[sum -1];
 
   const innerHTML = `
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+<div class="card " style="width: 18rem;">
+  <img src="${heroe.imagen}" class="card-img-top" alt="blackWidow">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">${heroe.nombre}</h5>
+    <h6 class="card-subtitle">${heroe.descripcion}</h6>
+    <p class="card-text">${heroe.superpoder}</p>
   </div>
 </div>`;
 document.querySelector("#card").innerHTML = innerHTML;
@@ -66,8 +139,8 @@ const preguntasContainer = () => {
   preguntas.forEach((pregunta) => {
     console.log(pregunta);
     innerHTML += `
-    <div>    
-        <div class="form-check">
+    <div class="">    
+        <div class="form-check item item-1">
             <h3>${pregunta.pregunta}</h3>
             <input class="form-check-input" value="${pregunta.valorRespuesta1}"type="radio" name="${pregunta.id}" id="${pregunta.id}-${pregunta.valorRespuesta1}">
             <label class="form-check-label" for="flexRadioDefault1">
@@ -83,7 +156,7 @@ const preguntasContainer = () => {
     </div> 
     `;
   });
-  innerHTML += `<button type="button" id="send" class="btn btn-primary" onClick="calcular()">Enviar</button>`;
+  innerHTML += `<button type="button" id="send" class="boton btn btn-danger vibrate-1" onClick="calcular()">Enviar</button>`;
   document.querySelector("#container").innerHTML = innerHTML;
 };
 preguntasContainer();
