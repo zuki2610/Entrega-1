@@ -123,7 +123,7 @@ const calcular = () => {
   const heroe =  heroes[sum -1];
 
   const innerHTML = `
-<div class="card " style="width: 18rem;">
+<div class="card" style="width: 18rem;">
   <img src="${heroe.imagen}" class="card-img-top" alt="blackWidow">
   <div class="card-body">
     <h5 class="card-title">${heroe.nombre}</h5>
